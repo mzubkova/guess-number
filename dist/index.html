@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Guess Number</title>
+</head>
+<div class="inner">
+  <div class="inner-guess">
+    <form class="form">
+      <h1 class="form__title">Привет, я загадалa число от 1 до 100 вашего диапазона. <br> Попробуй угадать его за 15 попыток!</h1>
+      <label class="form__label" for="">Number
+              <input class="form__input" type="text" value="">
+      </label>
+      <div class="form__btn">
+      <button class="form__btn--play btn" type="submit">Generate</button>
+      <button class="form__btn--exit btn">Exit</button>
+      </div>
+    <input class="form__input--error" value="" readonly placeholder="результат"></input>
+        <div class="text-attempts"></div>
+    </form>
+  </div>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>

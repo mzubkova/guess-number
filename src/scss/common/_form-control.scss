@@ -1,0 +1,112 @@
+.form {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  text-align: center;
+
+  &__title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  &__label {
+    color: $text-dark-gray;
+    display: inline-block;
+    font-size: 1.4rem;
+    margin: 0 20px 0 0;
+  }
+
+  &__input {
+    background-color: $text-white;
+    border: 1px solid $text-gray;
+    font-size: 2rem;
+    height: 30px;
+    margin: 20px 10px;
+    padding: 5px;
+    width: 70px;
+
+    &:focus {
+      border-style: none;
+      outline: 2px outset rgba(79, 146, 212, 1);
+    }
+
+    &--error {
+      border: 1px solid $text-gray;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 10px;
+      text-align: center;
+      width: 80%;
+
+      &::placeholder {
+        font-style: italic;
+        font-weight: 400;
+        text-align: left;
+      }
+
+      &:focus {
+        outline: 1px solid #e31f39;
+      }
+    }
+  }
+
+  &__btn {
+    margin-bottom: 20px;
+
+    &--play {
+      background: rgb(119, 114, 203);
+      background: linear-gradient(
+        0deg,
+        rgba(119, 114, 203, 1) 0%,
+        rgba(79, 146, 212, 1) 8%,
+        rgba(0, 206, 255, 1) 35%,
+        rgba(147, 223, 241, 1) 62%,
+        rgba(255, 255, 255, 1) 100%
+      );
+      border: 2px solid rgba(119, 114, 203, 1);
+      margin-right:  20px;
+    }
+
+    &--exit {
+      background: rgb(119, 114, 203);
+      background: linear-gradient(
+        0deg,
+        rgba(119, 114, 203, 1) 0%,
+        rgba(212, 79, 209, 1) 14%,
+        rgba(224, 143, 201, 1) 35%,
+        rgba(240, 213, 239, 1) 62%,
+        rgba(255, 255, 255, 1) 100%
+      );
+      border: 2px solid rgba(212, 79, 209, 1);
+      margin: 0 auto;
+    }
+
+    &--disabled {
+      background: $text-gray;
+      border-style: none;
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.btn {
+  border-radius: 5px;
+  color: #1e2240;
+  font-weight: 700;
+  height: 30px;
+  text-transform: uppercase;
+  width: 120px;
+
+  &:hover {
+    box-shadow: 9px 8px 24px 0 rgba(0, 0, 0, 0.75);
+  }
+}
