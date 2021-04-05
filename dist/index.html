@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <title>Guess Number</title>
 </head>
 <div class="inner">
   <div class="inner-guess">
     <form class="form">
-      <h1 class="form__title">Привет, я загадалa число от 1 до 100 вашего диапазона. <br> Попробуй угадать его за 15 попыток!</h1>
-      <label class="form__label" for="">Number
-              <input class="form__input" type="text" value="">
-      </label>
-      <div class="form__btn">
-      <button class="form__btn--play btn" type="submit">Generate</button>
-      <button class="form__btn--exit btn">Exit</button>
+      <h1 class="form__title">Привет, я загадалa число от 1 до 100 вашего диапазона. <br> Попробуй угадать его за 5
+        попыток!</h1>
+      <div class="form-group">
+
+        <div class="form-group__input">
+          <h2>Ты можешь настроить игру</h2>
+          <label class="form-group__input-label">от
+            <input class="form-group__input-min" type="text" name="" id="">
+          </label>
+          <label class="form-group__input-label">до
+            <input class="form-group__input-max" type="text" name="" id="">
+          </label>
+          <label class="form-group__input-label">попытки<input class="form-group__input-attempt" type="text" name=""
+              id=""></label>
+          <button class="form-group__btn" type="button">apply</button>
+        </div>
       </div>
-    <input class="form__input--error" value="" readonly placeholder="результат"></input>
-        <div class="text-attempts"></div>
+      <div class="form-generate">
+        <label class="form__label">Введи число</label>
+        <input class="form__input" type="text" value="">
+        <button class="form__btn--play btn" type="submit">Generate</button>
+      </div>
+      <label for="input-result"></label>
+      <input class="form__input--error" value="" name="input-result" readonly placeholder="результат"></input>
+      <div class="text-attempts"></div>
+      <button class="form__btn--exit btn">Exit</button>
     </form>
   </div>
 </div>
 <script src="js/index.js"></script>
 </body>
+
 </html>

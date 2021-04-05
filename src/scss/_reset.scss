@@ -34,3 +34,10 @@ button {
   cursor: pointer;
   outline: none;
 }
+
+input::placeholder {
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 400;
+  text-align: left;
+}

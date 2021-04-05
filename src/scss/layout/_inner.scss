@@ -27,6 +27,10 @@
 .text-success {
   color: rgba(212, 79, 209, 1);
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin: 20px 40px;
   text-align: center;
+}
+
+.err {
+  border: 2px solid #d60f29;
 }

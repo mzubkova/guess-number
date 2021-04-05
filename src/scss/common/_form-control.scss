@@ -13,19 +13,72 @@
     text-align: center;
   }
 
+  &-group {
+    align-items: center;
+    padding: 20px;
+
+    &__btn {
+      border: 2px solid rgb(119, 114, 203);
+      height: 30px;
+      width: 70px;
+    }
+
+    &__input {
+      align-items: center;
+      border: 1px solid $text-gray;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      width: 500px;
+
+      &-label {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin: 0 10px 10px;
+      }
+
+      &-min {
+        border: 1px solid $text-gray;
+        height: 50px;
+        width: 50px;
+
+        &--success {
+          border: 2px solid #56ff00;
+        }
+      }
+
+      &-max {
+        border: 1px solid $text-gray;
+        height: 50px;
+        width: 50px;
+
+        &--success {
+          border: 2px solid #56ff00;
+        }
+      }
+
+      &-attempt {
+        border: 1px solid $text-gray;
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+
   &__label {
     color: $text-dark-gray;
     display: inline-block;
     font-size: 1.4rem;
-    margin: 0 20px 0 0;
+    margin: 0;
   }
 
   &__input {
     background-color: $text-white;
-    border: 1px solid $text-gray;
+    border: 2px solid rgba(119, 114, 203, 1);
+    border-radius: 5px;
     font-size: 2rem;
     height: 30px;
-    margin: 20px 10px;
+    margin: 0 30px 0 10px;
     padding: 5px;
     width: 70px;
 
@@ -43,21 +96,19 @@
       text-align: center;
       width: 80%;
 
-      &::placeholder {
-        font-style: italic;
-        font-weight: 400;
-        text-align: left;
-      }
-
       &:focus {
         outline: 1px solid #e31f39;
       }
     }
   }
 
-  &__btn {
+  &-generate {
+    align-items: center;
+    display: flex;
     margin-bottom: 20px;
+  }
 
+  &__btn {
     &--play {
       background: rgb(119, 114, 203);
       background: linear-gradient(
@@ -69,7 +120,6 @@
         rgba(255, 255, 255, 1) 100%
       );
       border: 2px solid rgba(119, 114, 203, 1);
-      margin-right:  20px;
     }
 
     &--exit {

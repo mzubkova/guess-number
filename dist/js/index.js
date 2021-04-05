@@ -1,80 +1,170 @@
 var generateButton = document.querySelector(".form__btn--play");
+var settingsButton = document.querySelector(".form-group__btn");
 var exitButton = document.querySelector(".form__btn--exit");
-var input = document.querySelector("input");
+var input = document.querySelector(".form__input");
 var inputError = document.querySelector(".form__input--error");
 var attempts = document.querySelector(".inner-guess__attempts");
 var form = document.querySelector(".form");
-
+var rangeMin = document.querySelector(".form-group__input-min");
+var rangeMax = document.querySelector(".form-group__input-max");
+var inputAttempt = document.querySelector(".form-group__input-attempt");
 var resultSuccess = document.createElement("p");
 resultSuccess.classList.add("text-success");
 
-var count = 0;
 var output = "";
+var count = 5;
 
-var handleClick = function clicks() {
-  count++;
-  if (count === 15) {
+// user settings
+// function getAttempts(userAttemptValue) {
+//   userAttemptValue = +inputAttempt.value;
+//   console.log("userAttemptValue", userAttemptValue);
+
+//   if (userAttemptValue >= 1 && userAttemptValue <= 15) {
+//     count = userAttemptValue;
+//     console.log("count", count);
+//   } return userAttemptValue;
+// }
+
+function getRanges() {
+  var validMin = +rangeMin.value;
+  var validMax = +rangeMax.value;
+
+  if (Number.isInteger(validMin) && validMin > 0 && validMin < 200) {
+    rangeMin.classList.add("form-group__input-min--success");
+  }
+  if (Number.isInteger(validMax) && validMax > 0 && validMax <= 200) {
+    rangeMax.classList.add("form-group__input-max--success");
+  }
+  var arr = [];
+  arr.push(validMin, validMax);
+  return arr;
+}
+
+function handleClick() {
+  if (--count == 0) {
     var output = "Вы использовали все попытки (:";
     var result = document.querySelector(".text-attempts");
     result.insertAdjacentHTML("afterbegin", output);
     generateButton.classList.add("form__btn--disabled");
     generateButton.disabled = true;
     inputError.remove();
-  } else {
-    console.log(count);
   }
+}
+
+var getRandomNumber = function (min, max) {
+  var ranges = getRanges();
+  min = ranges[0];
+  max = ranges[1];
+
+  console.log("min", min);
+  console.log("max", max);
+  var random = Math.floor(Math.random() * (max - min + 1) + min);
+  console.log("random", random);
+  return random;
 };
 
-function handleNumbers(e) {
+function checkValidInput(inputValue) {
+  inputValue = +input.value;
+  if (
+    !isNaN(inputValue) &&
+    Number.isInteger(inputValue) &&
+    inputValue <= 200 &&
+    inputValue >= 1
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function defaultNumbers(e) {
   e.preventDefault();
-  var secretNumber = 7;
+  var secretNumber = 75;
+  var output = "";
   var inputValue = +input.value;
+  console.log("secretNumber default", secretNumber);
 
-  if (Number.isInteger(inputValue) && inputValue <= 200 && inputValue >= 1) {
-    var oddSingleNumber = inputValue % 2 === 0;
-    var strValue = inputValue.toString();
-    var unitNumber = strValue.length == 1;
-
-    if (inputValue == secretNumber) {
-      output = `Поздравляю! Ты угадал задуманное число "${inputValue}"`;
-      resultSuccess.append(output);
-      form.append(resultSuccess);
-      generateButton.classList.add("form__btn--disabled");
-      generateButton.disabled = true;
-      inputError.remove();
-    } else if (unitNumber && !oddSingleNumber) {
-      output = `Не угадал, но очень близко к числу ${inputValue}! попытка: ${
-        count + 1
-      }`;
-      inputError.value = output;
-    } else if (unitNumber && oddSingleNumber) {
-      output = `Не угадал, но близко от числа ${inputValue}! попытка: ${
-        count + 1
-      } \n`;
-      inputError.value = output;
-    } else if (inputValue >= 50 && inputValue <= 100) {
-      output = `Не угадал, ${inputValue} очень далеко от числа! попытка: ${
-        count + 1
-      }`;
-      inputError.value = output;
-    } else {
-      output = `Не угадал, число меньше чем ${inputValue}! попытка: ${
-        count + 1
-      }`;
-      inputError.value = output;
+  if (checkValidInput(inputValue)) {
+    switch (inputValue >= 1 && inputValue <= 100) {
+      case inputValue === secretNumber:
+        output = `Поздравляю! Ты угадал задуманное число "${inputValue}"`;
+        resultSuccess.append(output);
+        form.append(resultSuccess);
+        generateButton.classList.add("form__btn--disabled");
+        generateButton.disabled = true;
+        inputError.remove();
+        break;
+      case inputValue < secretNumber:
+        output = `Не угадал, загаданное число больше ${inputValue}! Осталось ${count} попыток`;
+        inputError.value = output;
+        break;
+      case inputValue > secretNumber:
+        output = `Не угадал, загаданное число меньше ${inputValue}! Осталось ${count} попыток`;
+        inputError.value = output;
+        break;
+      default:
+        output = `Введите корректный! Осталось ${count} попыток`;
+        inputError.value = output;
+        break;
     }
   } else {
-    output = `Введите целое число от 1 до 200`;
+    output = `Введите корректное значение!  Осталось ${count} попыток`;
     inputError.value = output;
   }
 }
 
-generateButton.addEventListener("click", handleNumbers);
+function handleNumbers(e) {
+  e.preventDefault();
+  var validMin = +rangeMin.value;
+  var validMax = +rangeMax.value;
+  var secretNumber = getRandomNumber();
+  var output = "";
+  var inputValue = +input.value;
+
+  if (checkValidInput(inputValue) && getRanges()) {
+    switch (inputValue >= validMin && inputValue <= validMax) {
+      case inputValue === secretNumber:
+        output = `Поздравляю! Ты угадал задуманное число "${inputValue}"`;
+        resultSuccess.append(output);
+        form.append(resultSuccess);
+        generateButton.classList.add("form__btn--disabled");
+        generateButton.disabled = true;
+        inputError.remove();
+        break;
+      case inputValue < getRandomNumber():
+        output = `Не угадал, загаданное число больше ${inputValue}! Осталось ${count} попыток`;
+        inputError.value = output;
+        break;
+      case inputValue > getRandomNumber():
+        output = `Не угадал, загаданное число меньше ${inputValue}! Осталось ${count} попыток`;
+        inputError.value = output;
+        break;
+      default:
+        output = `Введите число! Осталось ${count} попыток`;
+        inputError.value = output;
+        break;
+    }
+  } else {
+    output = `Введите корректное значение!  Осталось ${count} попыток`;
+    inputError.value = output;
+  }
+}
+
+settingsButton.addEventListener("click", getRanges);
+settingsButton.addEventListener("click", getRandomNumber);
+// settingsButton.addEventListener("click", getAttempts);
+
+if (getRandomNumber() && getRanges()) {
+  generateButton.addEventListener("click", handleNumbers);
+} else {
+  generateButton.addEventListener("click", defaultNumbers);
+}
+
+generateButton.addEventListener("click", checkValidInput);
 generateButton.addEventListener("click", handleClick);
 generateButton.addEventListener("click", function (e) {
   input.value = "";
 });
-
 exitButton.addEventListener("click", function (e) {
   inputError.remove();
 });
