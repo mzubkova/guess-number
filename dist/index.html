@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,17 +15,16 @@
       <h1 class="form__title">Привет, я загадалa число от 1 до 100 вашего диапазона. <br> Попробуй угадать его за 5
         попыток!</h1>
       <div class="form-group">
-
-        <div class="form-group__input">
-          <h2>Ты можешь настроить игру</h2>
-          <label class="form-group__input-label">от
-            <input class="form-group__input-min" type="text" name="" id="">
+        <h2 class="form-group__title">Ты можешь настроить игру</h2>
+        <div class="form-group__list">
+          <label class="form-group__label">от:
           </label>
-          <label class="form-group__input-label">до
-            <input class="form-group__input-max" type="text" name="" id="">
+          <input class="form-group__input form-group__input-min" type="text" name="min" placeholder="1">
+          <label class="form-group__label">до:
           </label>
-          <label class="form-group__input-label">попытки<input class="form-group__input-attempt" type="text" name=""
-              id=""></label>
+          <input class="form-group__input form-group__input-max" type="text" name="max" placeholder="200">
+          <label class="form-group__label">попытки:</label>
+          <input class="form-group__input form-group__input-attempt" type="text" name="attempt" placeholder="1-15">
           <button class="form-group__btn" type="button">apply</button>
         </div>
       </div>
@@ -35,8 +33,8 @@
         <input class="form__input" type="text" value="">
         <button class="form__btn--play btn" type="submit">Generate</button>
       </div>
-      <label for="input-result"></label>
-      <input class="form__input--error" value="" name="input-result" readonly placeholder="результат"></input>
+      <label></label>
+      <input class="form__input--error" value="" name="input-result" readonly placeholder="результат">
       <div class="text-attempts"></div>
       <button class="form__btn--exit btn">Exit</button>
     </form>
@@ -44,5 +42,4 @@
 </div>
 <script src="js/index.js"></script>
 </body>
-
 </html>

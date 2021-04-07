@@ -36,8 +36,48 @@ button {
 }
 
 input::placeholder {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-style: italic;
   font-weight: 400;
   text-align: left;
+}
+
+input::input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input::placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input:placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input:input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input:focus::input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input:focus:placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input:focus:input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
