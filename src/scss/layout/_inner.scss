@@ -14,6 +14,10 @@
     border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
     border-width: 5px;
     width: 700px;
+
+    @media (max-width: 768px) {
+      width: 500px;
+    }
   }
 }
 
@@ -22,6 +26,10 @@
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 }
 
 .text-success {
@@ -29,4 +37,8 @@
   font-size: 2rem;
   margin: 40px 0 0;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 }
